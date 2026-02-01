@@ -1,0 +1,42 @@
+# =========================
+# ENV & SECRET
+# =========================
+.env
+.env.*
+backend/.env
+frontend/.env
+
+# =========================
+# DEPENDENCIES
+# =========================
+node_modules/
+backend/node_modules/
+frontend/node_modules/
+
+# =========================
+# BUILD OUTPUT
+# =========================
+frontend/dist/
+frontend/build/
+
+# =========================
+# LOG & CACHE
+# =========================
+*.log
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# EDITOR & OS
+# =========================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# =========================
+# VITE / REACT CACHE
+# =========================
+frontend/.vite
+frontend/.cache
