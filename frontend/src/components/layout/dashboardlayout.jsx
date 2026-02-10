@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import Sidebar from "./sidebar";
 import Navbar from "./navbar";
 
-const DashboardLayout = () => {
+const DashboardLayout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -26,8 +26,8 @@ const DashboardLayout = () => {
       <div className="md:ml-64 flex flex-col min-h-screen">
         <Navbar onMenuClick={() => setSidebarOpen(true)} />
 
-        <main className="pt-16 md:p-6 flex-1 overflow-y-auto">
-          <Outlet />
+        <main className="mt-16 p-4 md:p-6 flex-1 overflow-y-auto">
+          {children}
         </main>
       </div>
     </div>

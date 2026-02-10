@@ -4,6 +4,7 @@ import cors from "cors"
 import authRoute from "./routes/authRoute.js"
 import assetRoute from "./routes/assetRoute.js"
 import maintenanceRoute from "./routes/maintenanceRoute.js"
+import vendorRoute from "./routes/vendorRoute.js"
 
 const app = express();
 
@@ -18,9 +19,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/auth", authRoute)
 app.use("/api/assets", assetRoute)
 app.use("/api/maintenance", maintenanceRoute)
+app.use("/api/vendors", vendorRoute)
 
 app.get("/", (req, res) =>{
-    res.send("Auth API berjalan 🚀")
+    res.send("API berjalan 🚀")
 })
 
 app.listen(4000, () => {

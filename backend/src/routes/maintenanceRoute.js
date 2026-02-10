@@ -4,7 +4,8 @@ import {
   getTechnicians,
   createMaintenance,
   assignTechnician,
-  completeMaintenance
+  completeMaintenance,
+  deleteMaintenance
 } from "../controllers/maintenanceController.js";
 
 import { verifyToken, allowRoles } from "../middlewares/auth_middleware.js";
@@ -17,16 +18,12 @@ router.get(
   "/technicians",  verifyToken,  allowRoles("admin"), getTechnicians
 );
 
-router.post(
-  "/", verifyToken, allowRoles("karyawan"), createMaintenance
-);
+router.post("/", verifyToken, allowRoles("karyawan"), createMaintenance);
 
-router.put(
-  "/:id/assign", verifyToken, allowRoles("admin"), assignTechnician
-);
+router.put("/:id/assign", verifyToken, allowRoles("admin"), assignTechnician);
 
-router.put(
-  "/:id/complete", verifyToken, allowRoles("teknisi"), completeMaintenance
-);
+router.put("/:id/complete", verifyToken, allowRoles("teknisi"), completeMaintenance);
+
+router.delete("/:id",  verifyToken,  allowRoles("admin"),  deleteMaintenance);
 
 export default router;

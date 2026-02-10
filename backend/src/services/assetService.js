@@ -48,7 +48,7 @@ export const createAssetService = async (data) => {
             acquisition_price, current_value,
             installment_value, installment_tenor, installment_remaining,
             purchase_date
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         [
             asset_code, asset_name, category, quantity, maintenance_quantity,available_quantity, asset_status, condition_status, acquisition_price, current_value, installment_value, installment_tenor, installment_remaining, purchase_date
         ]

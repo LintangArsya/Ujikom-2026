@@ -66,9 +66,9 @@ export const createMaintenanceService = async (
 
   const [result] = await db.query(
     `INSERT INTO maintenance_requests
-     (asset_id, requested_by, quantity, issue_description)
-     VALUES (?, ?, ?, ?)`,
-    [asset_id, user_id, request_quantity, issue]
+     (asset_id, requested_by, quantity, issue_description, status)
+     VALUES (?, ?, ?, ?, ?)`,
+    [asset_id, user_id, request_quantity, issue, "pending"]
   );
 
   await db.query(
@@ -83,6 +83,7 @@ export const createMaintenanceService = async (
 
   return result.insertId;
 };
+
 
 export const assignTechnicianService = async (id, technician_id) => {
   await db.query(
@@ -130,12 +131,11 @@ export const completeMaintenanceService = async (
   if (result_condition === "rusak") {
     await db.query(
       `UPDATE assets
-       SET
-         quantity = quantity - ?,
-         maintenance_quantity = maintenance_quantity - ?,
-         available_quantity = available_quantity - ?
-       WHERE id = ?`,
-      [data.quantity, data.quantity, data.quantity, data.asset_id]
+      SET
+        quantity = quantity - ?,
+        maintenance_quantity = maintenance_quantity - ?
+      WHERE id = ?`,
+      [data.quantity, data.quantity, data.asset_id]
     );
   }
 
@@ -147,5 +147,13 @@ export const completeMaintenanceService = async (
        completion_date = NOW()
      WHERE id = ?`,
     [result_condition, request_id]
+  );
+};
+
+
+export const deleteMaintenanceService = async (id) => {
+  await db.query(
+    "DELETE FROM maintenance_requests WHERE id = ?",
+    [id]
   );
 };

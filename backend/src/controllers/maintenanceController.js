@@ -3,7 +3,7 @@ import {
   getTechniciansService,
   createMaintenanceService,
   assignTechnicianService,
-  completeMaintenanceService
+  completeMaintenanceService, deleteMaintenanceService
 } from "../services/maintenanceService.js";
 
 export const getAllMaintenance = async (req, res) => {
@@ -23,26 +23,6 @@ export const getTechnicians = async (req, res) => {
     res.status(500).json({ msg: err.message });
   }
 };
-
-// export const createMaintenance = async (req, res) => {
-//   try {
-//     const { asset_code, issue_description } = req.body;
-//     const user_id = req.user.id;
-
-//     const id = await createMaintenanceService(
-//       asset_code,
-//       user_id,
-//       issue_description
-//     );
-
-//     res.status(201).json({
-//       msg: "Maintenance request berhasil",
-//       id
-//     });
-//   } catch (err) {
-//     res.status(400).json({ msg: err.message });
-//   }
-// };
 
 export const createMaintenance = async (req, res) => {
   try {
@@ -90,6 +70,15 @@ export const completeMaintenance = async (req, res) => {
 
     await completeMaintenanceService(req.params.id, result_condition);
     res.json({ msg: "Maintenance selesai" });
+  } catch (err) {
+    res.status(400).json({ msg: err.message });
+  }
+};
+
+export const deleteMaintenance = async (req, res) => {
+  try {
+    await deleteMaintenanceService(req.params.id);
+    res.json({ msg: "Maintenance berhasil dihapus" });
   } catch (err) {
     res.status(400).json({ msg: err.message });
   }

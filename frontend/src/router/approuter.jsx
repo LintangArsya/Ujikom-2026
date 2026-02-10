@@ -4,11 +4,8 @@ import ProtectedRoute from "../auth/protectedRoute.jsx";
 import Login from "../pages/auth/login.jsx";
 import Register from "../pages/auth/register.jsx";
 //Dashboard
-import KaryawanDashboard from "../pages/dashboard/karyawandashboard.jsx";
-import AdminDashboard from "../pages/dashboard/admindashboard.jsx";
-import DireksiDashboard from "../pages/dashboard/direksidashboard.jsx";
-import TeknisiDashboard from "../pages/dashboard/teknisidashboard.jsx";
 import DashboardLayout from "../components/layout/dashboardlayout.jsx";
+import Dashboard from "../pages/dashboard/dashboard.jsx";
 //Users
 import UserLayout from "../components/layout/userlayout.jsx";
 import UserPages from "../pages/users/userpages.jsx";
@@ -17,10 +14,7 @@ import AssetLayout from "../components/layout/assetlayout.jsx";
 import AssetPage from "../pages/assets/assetpages.jsx";
 //MaintenanceRequest
 import MaintenanceRequestLayout from "../components/layout/maintenancerequestlayout.jsx";
-import AdminMaintenanceRequest from "../pages/maintenance_request/adminmaintenance_request.jsx";
-import DireksiMaintenanceRequest from "../pages/maintenance_request/direksimaintenance_request.jsx";
-import KaryawanMaintenanceRequest from "../pages/maintenance_request/karyawanmaintenance_request.jsx";
-import TeknisiMaintenanceRequest from "../pages/maintenance_request/teknisimaintenance_request.jsx";
+import MaintenancePage from "../pages/maintenance/maintenancepages.jsx";
 
 
 const AppRouter = () => {
@@ -38,7 +32,7 @@ const AppRouter = () => {
         element={
           <ProtectedRoute roles={["admin"]}>
             <DashboardLayout>
-                <AdminDashboard />
+                <Dashboard />
             </DashboardLayout>
           </ProtectedRoute>
         }
@@ -49,7 +43,7 @@ const AppRouter = () => {
         element={
           <ProtectedRoute roles={["direksi"]}>
             <DashboardLayout>
-                <DireksiDashboard />
+                <Dashboard />
             </DashboardLayout>
           </ProtectedRoute>
         }
@@ -60,7 +54,7 @@ const AppRouter = () => {
         element={
           <ProtectedRoute roles={["karyawan"]}>
             <DashboardLayout>
-                <KaryawanDashboard />
+                <Dashboard />
             </DashboardLayout>
           </ProtectedRoute>
         }
@@ -71,7 +65,7 @@ const AppRouter = () => {
         element={
           <ProtectedRoute roles={["teknisi"]}>
             <DashboardLayout>
-                <TeknisiDashboard />
+                <Dashboard />
             </DashboardLayout>
           </ProtectedRoute>
         }
@@ -140,7 +134,7 @@ const AppRouter = () => {
         element={
           <ProtectedRoute roles={["admin"]}>
             <MaintenanceRequestLayout>
-              <AdminMaintenanceRequest/>
+              <MaintenancePage/>
             </MaintenanceRequestLayout>
           </ProtectedRoute>
         }
@@ -151,7 +145,7 @@ const AppRouter = () => {
         element={
           <ProtectedRoute roles={["direksi"]}>
             <MaintenanceRequestLayout>
-              <DireksiMaintenanceRequest/>
+              <MaintenancePage/>
             </MaintenanceRequestLayout>
           </ProtectedRoute>
         }
@@ -162,7 +156,7 @@ const AppRouter = () => {
         element={
           <ProtectedRoute roles={["karyawan"]}>
             <MaintenanceRequestLayout>
-              <KaryawanMaintenanceRequest/>
+              <MaintenancePage/>
             </MaintenanceRequestLayout>
           </ProtectedRoute>
         }
@@ -173,7 +167,7 @@ const AppRouter = () => {
         element={
           <ProtectedRoute roles={["teknisi"]}>
             <MaintenanceRequestLayout>
-              <TeknisiMaintenanceRequest/>
+              <MaintenancePage/>
             </MaintenanceRequestLayout>
           </ProtectedRoute>
         }
