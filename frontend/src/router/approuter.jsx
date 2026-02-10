@@ -16,6 +16,8 @@ import AssetPage from "../pages/assets/assetpages.jsx";
 import MaintenanceRequestLayout from "../components/layout/maintenancerequestlayout.jsx";
 import MaintenancePage from "../pages/maintenance/maintenancepages.jsx";
 
+import BaruLayout from "../components/layout/barulayout.jsx";
+
 
 const AppRouter = () => {
   return (
@@ -169,6 +171,17 @@ const AppRouter = () => {
             <MaintenanceRequestLayout>
               <MaintenancePage/>
             </MaintenanceRequestLayout>
+          </ProtectedRoute>
+        }
+      />
+
+
+      <Route 
+        path="/dashboard/admin/baru"
+        element={
+          <ProtectedRoute roles={["admin"]}>
+            <BaruLayout>
+            </BaruLayout>
           </ProtectedRoute>
         }
       />

@@ -4,6 +4,7 @@ export const sidebarMenu = {
     { label: "User Management", path: "/dashboard/users" },
     { label: "Assets", path: "/dashboard/admin/assets" },
     { label: "Maintenance", path: "/dashboard/admin/maintenance" },
+    { label: "Baru", path: "/dashboard/admin/baru"}
   ],
 
   direksi: [
